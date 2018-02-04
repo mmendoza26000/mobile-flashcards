@@ -4,14 +4,16 @@ import AppBar from './AppBar';
 import DeckItem from './DeckItem';
 import Button from './Button';
 
-export default DetailDeckView = ({deckItem}) => {
+import { connect } from 'react-redux';
+
+const DetailDeckView = ({deckItem}) => {
 
     return(
         <View style={styles.container}>
             <AppBar title={deckItem.title} />
 
             <View style={styles.innerContainer}>
-                <DeckItem title='udacicards' numCards='3' />
+                <DeckItem title={deckItem.title} numCards={deckItem.numCards} />
             </View>
 
             <View style={styles.innerContainer}>
@@ -38,3 +40,13 @@ const styles = StyleSheet.create({
     }
 
 })
+
+
+function mapStateToProps(decks){
+    console.log('state', decks);
+    return {
+        deckItem: { title: decks['JavaScript'].title, numCards: decks['JavaScript'].questions.length }
+    }
+}
+
+export default connect(mapStateToProps)(DetailDeckView);

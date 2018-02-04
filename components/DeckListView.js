@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import TitleBar from './TitleBar';
 import DeckItem from './DeckItem';
 
+import { connect } from 'react-redux';
+
 const Divider = () => (
     <View style={{
         height: 3,
@@ -11,21 +13,24 @@ const Divider = () => (
     }}></View>
 )
 
-export default DeckListView = () => {
+const DeckListView = ({decks}) => {
     return(
         <View style={styles.container}>
 
             <TitleBar text='DECKS'  />
 
             <ScrollView style={{flex:1, paddingLeft: 20, paddingRight: 20}}>
-                <DeckItem title='udacicards' numCards='3' />
-                <Divider />
-                <DeckItem title='new deck' numCards='0' />
-                <Divider />
-                <DeckItem title='New deck 2' numCards='0' />
-                <Divider />
-                <DeckItem title='fourth' numCards='0' />
-                <Divider />
+
+                {
+                    decks.map(deck => (
+                            <View>
+                                <DeckItem key={deck.title} title={deck.title} numCards={deck.numCards} />
+                                <Divider /> 
+                            </View>
+                        )
+                    )
+                }
+
             </ScrollView>
         </View>
     )
@@ -41,3 +46,17 @@ const styles = StyleSheet.create({
     },
 
 })
+
+
+function mapStateToProps(decks){
+    
+    return({
+        decks: Object.keys(decks).map(key =>  ({
+                        title: decks[key].title, 
+                        numCards: decks[key].questions.length 
+                    }))
+    })
+
+}
+
+export default connect(mapStateToProps)(DeckListView);
