@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import AppBar from './AppBar';
 import DeckItem from './DeckItem';
@@ -6,23 +6,35 @@ import Button from './Button';
 
 import { connect } from 'react-redux';
 
-const DetailDeckView = ({deckItem}) => {
+class DetailDeckView extends Component {
 
-    return(
-        <View style={styles.container}>
-            {/* <AppBar title={deckItem.title} /> */}
+    static navigationOptions = ({ navigation }) => {
+        const { params } = navigation.state;
+        
+        return {
+          title: params ? params.title : 'Detail Deck View',
+        }
+      }
 
-            <View style={styles.innerContainer}>
-                <DeckItem title={deckItem.title} numCards={deckItem.numCards} />
+    render(){
+
+        const { deckItem } = this.props;
+        return(
+            <View style={styles.container}>
+                {/* <AppBar title={deckItem.title} /> */}
+
+                <View style={styles.innerContainer}>
+                    <DeckItem title={deckItem.title} numCards={deckItem.numCards} />
+                </View>
+
+                <View style={styles.innerContainer}>
+                    <Button label='Add Card' />
+                    <Button label='Start Quiz' textColor='white' bgColor='black' />
+
+                </View>
             </View>
-
-            <View style={styles.innerContainer}>
-                <Button label='Add Card' />
-                <Button label='Start Quiz' textColor='white' bgColor='black' />
-
-            </View>
-        </View>
-    )
+        )
+    }
 }
 
 const styles = StyleSheet.create({
