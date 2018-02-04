@@ -10,7 +10,7 @@ const DetailDeckView = ({deckItem}) => {
 
     return(
         <View style={styles.container}>
-            <AppBar title={deckItem.title} />
+            {/* <AppBar title={deckItem.title} /> */}
 
             <View style={styles.innerContainer}>
                 <DeckItem title={deckItem.title} numCards={deckItem.numCards} />
@@ -29,9 +29,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'stretch',
-        justifyContent: 'flex-start',
-        borderWidth: 1,
-        borderColor: 'green'
+        justifyContent: 'flex-start'
     },
     innerContainer: {
         flex:1,
@@ -42,10 +40,10 @@ const styles = StyleSheet.create({
 })
 
 
-function mapStateToProps(decks){
-    console.log('state', decks);
+function mapStateToProps(decks, props){
+    const deckName = props.navigation.state.params.deckName;
     return {
-        deckItem: { title: decks['JavaScript'].title, numCards: decks['JavaScript'].questions.length }
+        deckItem: { title: decks[deckName].title, numCards: decks[deckName].questions.length }
     }
 }
 

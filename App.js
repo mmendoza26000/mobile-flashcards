@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import DeckListView from './components/DeckListView';
 import DetailDeckView from './components/DetailDeckView';
 
@@ -13,13 +14,36 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+const Stack = StackNavigator({
+  DeckListView: {
+    screen: DeckListView,
+    navigationOptions: {
+      title: 'DECKS',
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'black'
+      }
+    }
+  },
+  DetailDeckView: {
+    screen: DetailDeckView,
+    navigationOptions: {
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'black'
+      }
+    }
+  }
+})
+
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <DetailDeckView />
-          {/* <DeckListView /> */}
+          
+          <Stack />
+          
         </View>
       </Provider>
     );

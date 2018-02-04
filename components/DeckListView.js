@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import TitleBar from './TitleBar';
 import DeckItem from './DeckItem';
 
@@ -13,20 +13,29 @@ const Divider = () => (
     }}></View>
 )
 
-const DeckListView = ({decks}) => {
+const DeckListView = ({decks, navigation}) => {
     return(
         <View style={styles.container}>
 
-            <TitleBar text='DECKS'  />
+            {/* <TitleBar text='DECKS'  /> */}
 
             <ScrollView style={{flex:1, paddingLeft: 20, paddingRight: 20}}>
 
                 {
                     decks.map(deck => (
-                            <View>
+                            <TouchableOpacity 
+                                key={deck.title}
+                                onPress={()=>{ navigation.navigate(
+                                    'DetailDeckView',
+                                    { 
+                                        deckName: deck.title,
+                                        title: deck.title
+                                    }
+                                ) }}
+                            >
                                 <DeckItem key={deck.title} title={deck.title} numCards={deck.numCards} />
                                 <Divider /> 
-                            </View>
+                            </TouchableOpacity>
                         )
                     )
                 }
@@ -40,9 +49,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'stretch',
-        justifyContent: 'space-around',
-        borderWidth: 1,
-        borderColor: 'green'
+        justifyContent: 'space-around'
     },
 
 })
