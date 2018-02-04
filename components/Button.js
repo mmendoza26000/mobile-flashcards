@@ -2,7 +2,13 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
 
-export default Button = ({ label='No Label', bgColor='white', textColor='black', border = true }) => {
+export default Button = ({ 
+        label='No Label', 
+        bgColor='white', 
+        textColor='black', 
+        border = true,
+        onPress
+    }) => {
     
 
     return(
@@ -18,6 +24,7 @@ export default Button = ({ label='No Label', bgColor='white', textColor='black',
                 borderWidth: border ? 2 : 0,
                 alignItems: 'center'
             }}
+            onPress={onPress ? onPress : null}
         >
             <Text
                 style={{color: textColor, fontSize: 18}}

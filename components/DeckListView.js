@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import TitleBar from './TitleBar';
 import DeckItem from './DeckItem';
+import Button from './Button';
 
 import { connect } from 'react-redux';
 
@@ -18,7 +19,14 @@ const DeckListView = ({decks, navigation}) => {
         <View style={styles.container}>
 
             {/* <TitleBar text='DECKS'  /> */}
-
+            <View style={{ alignItems: 'center'}}>
+                <Button 
+                label='Add Deck'
+                onPress={()=>{ navigation.navigate(
+                    'NewDeckView'
+                ) }}    
+            />
+            </View>
             <ScrollView style={{flex:1, paddingLeft: 20, paddingRight: 20}}>
 
                 {

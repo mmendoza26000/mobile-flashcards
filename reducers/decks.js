@@ -29,6 +29,13 @@ const decksInitialState = {
 export function decks(state = decksInitialState, action){
     switch(action.type){
         case ADD_DECK:
+            return{
+                ...state,
+                [action.deckName] : {
+                    title: [action.deckName],
+                    questions: []
+                }
+            }
 
         case ADD_CARD:
 

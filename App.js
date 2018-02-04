@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import DeckListView from './components/DeckListView';
 import DetailDeckView from './components/DetailDeckView';
+import NewDeckView from './components/NewDeckView';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -33,6 +34,16 @@ const Stack = StackNavigator({
         backgroundColor: 'black'
       }
     }
+  },
+  NewDeckView: {
+    screen: NewDeckView,
+    navigationOptions: {
+      title: 'New deck',
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'black'
+      }
+    }
   }
 })
 
@@ -43,6 +54,7 @@ export default class App extends React.Component {
         <View style={styles.container}>
           
           <Stack />
+          
           
         </View>
       </Provider>
