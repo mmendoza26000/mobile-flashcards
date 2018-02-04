@@ -6,7 +6,7 @@ export default DeckListView = () => {
     return(
         <View style={styles.container}>
 
-            <TitleBar text='DECKS' />
+            <TitleBar text='DECKS'  />
 
             <View style={{flex:1}}>
                 <Text>Content</Text>
