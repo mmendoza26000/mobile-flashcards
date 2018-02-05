@@ -1,4 +1,8 @@
-import {ADD_CARD, ADD_DECK} from '../actions';
+import {
+    ADD_CARD, 
+    ADD_DECK,
+    GET_ALL_DECKS
+} from '../actions';
 
 const decksInitialState = {
     
@@ -28,6 +32,14 @@ const decksInitialState = {
 
 export function decks(state = decksInitialState, action){
     switch(action.type){
+
+        case GET_ALL_DECKS:{
+            return {
+                ...state,
+                ...action.decks
+            }
+        }
+
         case ADD_DECK:
             return{
                 ...state,
