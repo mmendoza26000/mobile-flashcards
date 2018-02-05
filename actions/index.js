@@ -15,7 +15,6 @@ export function getDecks() {
     return dispatch => {
         fetchDecks()
             .then( decks =>
-                // console.log('Decks from asyncstorage', decks)
                 dispatch(getAllDecks(decks))
             )
     }
