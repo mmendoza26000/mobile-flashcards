@@ -38,7 +38,18 @@ export function decks(state = decksInitialState, action){
             }
 
         case ADD_CARD:
+            const deckName = action.deckName;
 
+            return {
+                ...state,
+                [deckName] : {
+                    ...state[deckName],
+                    questions: [
+                        ...state[deckName].questions,
+                        action.question
+                    ]
+                }
+            }
         default:
             return state;
     }

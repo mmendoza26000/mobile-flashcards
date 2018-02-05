@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import DeckListView from './components/DeckListView';
 import DetailDeckView from './components/DetailDeckView';
 import NewDeckView from './components/NewDeckView';
+import AddQuestionView from './components/AddQuestionView';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -39,6 +40,15 @@ const Stack = StackNavigator({
     screen: NewDeckView,
     navigationOptions: {
       title: 'New deck',
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'black'
+      }
+    }
+  },
+  AddQuestionView: {
+    screen: AddQuestionView,
+    navigationOptions: {
       headerTintColor: 'white',
       headerStyle: {
         backgroundColor: 'black'

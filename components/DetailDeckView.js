@@ -18,7 +18,8 @@ class DetailDeckView extends Component {
 
     render(){
 
-        const { deckItem } = this.props;
+        const { deckItem, navigation } = this.props;
+
         return(
             <View style={styles.container}>
                 {/* <AppBar title={deckItem.title} /> */}
@@ -28,7 +29,18 @@ class DetailDeckView extends Component {
                 </View>
 
                 <View style={styles.innerContainer}>
-                    <Button label='Add Card' />
+                    <Button 
+                        label='Add Card'
+                        onPress={() => {
+                            navigation.navigate(
+                                'AddQuestionView',
+                                { 
+                                    deckName: deckItem.title,
+                                    title: `${deckItem.title}`
+                                }
+                            )
+                        }}    
+                    />
                     <Button label='Start Quiz' textColor='white' bgColor='black' />
 
                 </View>

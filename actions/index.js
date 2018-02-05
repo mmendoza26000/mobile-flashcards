@@ -7,3 +7,11 @@ export function addDeck(deckName){
         deckName
     }
 }
+
+export function addQuestion(deckName, question){
+    return {
+        type: ADD_CARD,
+        deckName,
+        question
+    }
+}
