@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Button from './Button';
+import { clearLocalNotification, setLocalNotification } from '../utils/notifications'
 
 import { connect } from 'react-redux';
 
@@ -31,6 +32,10 @@ class QuizView extends Component {
                         showAnswer: false
                     }
                 } else {
+                    //Reaching this point means the user has completed a Quiz
+                    clearLocalNotification()
+                        .then(setLocalNotification);
+
                     return {
                         currentQuestion: 0,
                         correctAnswers: state.correctAnswers +1,
@@ -50,6 +55,10 @@ class QuizView extends Component {
                       showAnswer: false
                   }
               } else {
+                    //Reaching this point means the user has completed a Quiz
+                    clearLocalNotification()
+                        .then(setLocalNotification);
+                        
                   return {
                       currentQuestion: 0,
                       showAnswer: false,

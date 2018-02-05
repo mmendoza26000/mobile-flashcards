@@ -10,6 +10,7 @@ import AddQuestionView from './AddQuestionView';
 import QuizView from './QuizView';
 
 import { getDecks } from '../actions';
+import  { setLocalNotification, clearLocalNotification }  from '../utils/notifications';
 
 
 const Stack = StackNavigator({
@@ -67,6 +68,14 @@ const Stack = StackNavigator({
 class Root extends Component {
 
     componentDidMount(){
+ 
+      // ****** Notification for one minute ahead *****
+      // clearLocalNotification()
+      //   .then(setLocalNotification);
+
+       // ****** Notification for tommorrow night *****
+       setLocalNotification();
+       
         this.props.dispatch(getDecks())
     }
 
