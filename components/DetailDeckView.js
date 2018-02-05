@@ -29,7 +29,7 @@ class DetailDeckView extends Component {
 
                 <View style={styles.innerContainer}>
                     <Button 
-                        label='Add Card'
+                        label='Create New Question'
                         onPress={() => {
                             navigation.navigate(
                                 'AddQuestionView',
