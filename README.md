@@ -64,19 +64,20 @@ However, all development is very standard and should work on newer versions as w
 
 ## Technical comments
 
-- App includes two default decks, those shown in section “Data” of the project details. Any changes made to the default decks will be saved to AsynStorage.
+- App includes two default decks, those shown in section “Data” of the project details. Any changes made to the default decks will be saved to AsyncStorage.
 
-- <Button/> is a reusable component used for all buttons in the app
+- "Button" is a reusable component used for all buttons in the app.
 
-- The app uses Redux for state management
+- The app uses Redux for state management.
 
 - After adding a new deck, a reset is issued to the navigator using a NavigationAction, in order to allow the user to go to the list of decks when he touches the back button in the header, otherwise the app will navigate to the “New Deck View”.
 
 - All Quiz functionality is contained in QuizView component
-regarding saving changes to AsyncStorage, I’m using only the function “getDecks" recommend as a tip in the project details. Since the state is managed using Redux, the reducer manages all the adding decks and adding questions functionality, and when there is a change, using a middleware in redux saves automatically the affected deck, whether it is a new one or an old one with a new question. Also, since the decks are all cached in the redux store, there is no need for a “getDeck” method accessing AsyncStorage, this job is done in the mapStateToProps function of the component that requieres it.
+
+- Regarding saving changes to AsyncStorage, I’m using only the function “getDecks" recommend as a tip in the project details. Since the state is managed using Redux, the reducer manages all the adding decks and adding questions functionality, and when there is a change, using a middleware in redux saves automatically the affected deck, whether it is a new one or an old one with a new question. Also, since the decks are all cached in the redux store, there is no need for a “getDeck” method accessing AsyncStorage, this job is done in the mapStateToProps function of the component that requieres it.
 
 - NOTIFICATIONS: 
-on iOS emulator Permissions.NOTIFICATIONS returns ‘undetermined’, even though permission has been granted. On Android works as expected.
+on iOS emulator Permissions.NOTIFICATIONS returns ‘undetermined’, even though permission has been granted. On Android works as expected. Further testing should be done (maybe with a real device), but since it works on Android is safe to assume it is a problem with the emulator.
 
 You can test local notifications in a faster way by commenting and uncommenting code in /utils/notifications.js and /components/Root.js. Out of the box the code works as requested in the rubric, commenting and uncommenting code in those files make the notification fire one minute after the app es loaded if no quiz is completed in that time. To prevent this, complete a quiz in under a minute :)   (notification will fire one minute after the quiz is completed).  Search for the string "Notification for one minute ahead” and comment and uncomment the code for ‘minute’or for ‘day’. Just remember to comment/uncomment both files.
 
