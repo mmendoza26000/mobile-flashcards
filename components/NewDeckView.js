@@ -33,6 +33,7 @@ class NewDeckView extends Component {
 
                 <View style={styles.innerContainer}>
                     <TextInput
+                        placeholder='Type the deck name (required)'
                         style={styles.input}
                         value={newDeck}
                         onChangeText={this.changeText}
@@ -41,6 +42,7 @@ class NewDeckView extends Component {
 
 
                     <Button 
+                        disabled={ !newDeck.length>0 }
                         label='Create Deck' 
                         textColor='white' 
                         bgColor='black' 
