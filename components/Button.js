@@ -7,6 +7,7 @@ export default Button = ({
         bgColor='white', 
         textColor='black', 
         border = true,
+        disabled = false,
         onPress
     }) => {
     
@@ -25,6 +26,7 @@ export default Button = ({
                 alignItems: 'center'
             }}
             onPress={onPress ? onPress : null}
+            disabled={disabled}
         >
             <Text
                 style={{color: textColor, fontSize: 18}}

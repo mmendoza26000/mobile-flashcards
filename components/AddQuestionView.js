@@ -44,13 +44,13 @@ class AddQuestionView extends Component {
 
                 <View style={styles.innerContainer}>
                     <TextInput
-                        placeholder='Type the question'
+                        placeholder='Type the question (required)'
                         style={styles.input}
                         value={question}
                         onChangeText={this.changeQuestionText}
                     />
                     <TextInput
-                        placeholder='Type the answer'
+                        placeholder='Type the answer (required)'
                         style={styles.input}
                         value={answer}
                         onChangeText={this.changeAnswerText}
@@ -59,6 +59,7 @@ class AddQuestionView extends Component {
 
 
                     <Button 
+                        disabled={ !(answer.length>0 && question.length>0) }
                         label='Submit' 
                         textColor='white' 
                         bgColor='black' 
