@@ -41,12 +41,18 @@ class NewDeckView extends Component {
 
 
                     <Button 
-                        label='Submit' 
+                        label='Create Deck' 
                         textColor='white' 
                         bgColor='black' 
                         onPress={() => {
                             addDeck(newDeck);
-                            navigation.goBack();
+                            navigation.navigate(
+                                'DetailDeckView',
+                                { 
+                                    deckName: newDeck,
+                                    title: newDeck
+                                }
+                            )
                         }}
                         />
 

@@ -14,7 +14,7 @@ export default Button = ({
     return(
         <TouchableOpacity
             style={{
-                width: 200,
+                width: 240,
                 backgroundColor: bgColor,
                 padding: 10,
                 marginTop: 10,
