@@ -5,6 +5,7 @@ import DeckListView from './components/DeckListView';
 import DetailDeckView from './components/DetailDeckView';
 import NewDeckView from './components/NewDeckView';
 import AddQuestionView from './components/AddQuestionView';
+import QuizView from './components/QuizView';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -54,6 +55,15 @@ const Stack = StackNavigator({
         backgroundColor: 'black'
       }
     }
+  },
+  QuizView: {
+    screen: QuizView,
+    navigationOptions: {
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'black'
+      }
+    }
   }
 })
 
@@ -64,6 +74,7 @@ export default class App extends React.Component {
         <View style={styles.container}>
           
           <Stack />
+
           
           
         </View>

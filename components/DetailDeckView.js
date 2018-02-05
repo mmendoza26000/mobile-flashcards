@@ -22,7 +22,6 @@ class DetailDeckView extends Component {
 
         return(
             <View style={styles.container}>
-                {/* <AppBar title={deckItem.title} /> */}
 
                 <View style={styles.innerContainer}>
                     <DeckItem title={deckItem.title} numCards={deckItem.numCards} />
@@ -41,7 +40,20 @@ class DetailDeckView extends Component {
                             )
                         }}    
                     />
-                    <Button label='Start Quiz' textColor='white' bgColor='black' />
+                    <Button 
+                        label='Start Quiz' 
+                        textColor='white' 
+                        bgColor='black' 
+                        onPress={() => {
+                            navigation.navigate(
+                                'QuizView',
+                                { 
+                                    deckName: deckItem.title,
+                                    title: `${deckItem.title}`
+                                }
+                            )
+                        }} 
+                        />
 
                 </View>
             </View>
@@ -67,7 +79,10 @@ const styles = StyleSheet.create({
 function mapStateToProps(decks, props){
     const deckName = props.navigation.state.params.deckName;
     return {
-        deckItem: { title: decks[deckName].title, numCards: decks[deckName].questions.length }
+        deckItem: { 
+            title: decks[deckName].title, 
+            numCards: decks[deckName].questions.length 
+        }
     }
 }
 
