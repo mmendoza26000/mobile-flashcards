@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 import AppBar from './AppBar';
 import DeckItem from './DeckItem';
 import Button from './Button';
@@ -17,6 +18,23 @@ class NewDeckView extends Component {
         this.setState({
             newDeck: inputText
         })
+    }
+
+    navigateToDeckDetail = (newDeck) => {
+        const resetAction = NavigationActions.reset({
+            index: 1,
+            actions: [
+              NavigationActions.navigate({ routeName: 'DeckListView' }),
+              NavigationActions.navigate( { routeName: 'DetailDeckView',
+                                            params: { 
+                                                        deckName: newDeck,
+                                                        title: newDeck
+                                                    }
+                                        } ),
+            ],
+          });
+          this.props.navigation.dispatch(resetAction);
+
     }
 
     render(){
@@ -48,13 +66,14 @@ class NewDeckView extends Component {
                         bgColor='black' 
                         onPress={() => {
                             addDeck(newDeck);
-                            navigation.navigate(
-                                'DetailDeckView',
-                                { 
-                                    deckName: newDeck,
-                                    title: newDeck
-                                }
-                            )
+                            this.navigateToDeckDetail(newDeck);
+                            // navigation.navigate(
+                            //     'DetailDeckView',
+                            //     { 
+                            //         deckName: newDeck,
+                            //         title: newDeck
+                            //     }
+                            // )
                         }}
                         />
 
