@@ -44,7 +44,7 @@ export function decks(state = decksInitialState, action){
             return{
                 ...state,
                 [action.deckName] : {
-                    title: [action.deckName],
+                    title: action.deckName,
                     questions: []
                 }
             }
