@@ -45,6 +45,11 @@ class DetailDeckView extends Component {
                         textColor='white' 
                         bgColor='black' 
                         onPress={() => {
+
+                            if(deckItem.numCards < 1){
+                                return alert('There are no questions');
+                            }
+
                             navigation.navigate(
                                 'QuizView',
                                 { 
