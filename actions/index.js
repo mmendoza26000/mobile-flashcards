@@ -1,10 +1,15 @@
-import { fetchDecks } from '../utils/api'
+import { fetchDecks, submitDeck } from '../utils/api'
 
 export const ADD_DECK = 'ADD_DECK';
 export const ADD_CARD = 'ADD_CARD';
 export const GET_ALL_DECKS = 'GET_ALL_DECKS';
 
 
+export function saveDeckToStorage(deck) {
+    return dispatch => {
+        submitDeck(deck)
+    }
+}
 
 export function getDecks() {    
     return dispatch => {
@@ -15,6 +20,8 @@ export function getDecks() {
             )
     }
 }
+
+
 
 export function getAllDecks(decks) {
     return {

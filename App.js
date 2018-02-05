@@ -8,7 +8,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import { decks } from './reducers/decks';
-
+import { saveDeck } from './middleware/saveDeckMiddleware';
 
 // const store = createStore(
 //   decks,
@@ -17,7 +17,7 @@ import { decks } from './reducers/decks';
 
 const store = createStore(
   decks,
-  applyMiddleware(thunkMiddleware)
+  applyMiddleware(thunkMiddleware, saveDeck)
 );
 
 
